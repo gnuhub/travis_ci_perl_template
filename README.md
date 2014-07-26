@@ -10,16 +10,19 @@ why
 ============
 
 * 非常喜欢 kiwi
-* 系统管子自动化
+* 系统管理自动化
 
 how
 ==============
 
 * http://docs.travis-ci.com/user/languages/perl/
+* 使用 `install` 覆盖掉默认的 `cpanm --quiet --installdeps --notest .`
 ```
-perl Build.PL && ./Build test
-perl Makefile.PL && make test
-make test
+install:
+  - cpanm -f -n $(cat .perlmodules | tr "\n" " ")
 ```
 * 与原来知识的结合点 是 make 
+```
+script: make test
+```
 * [kiwi Makefile范例](https://github.com/gnuhub/kiwi/blob/gnuhub_kiwi/Makefile)
